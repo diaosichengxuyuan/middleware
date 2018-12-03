@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xmlns:dubbo="http://dubbo.apache.org/schema/dubbo"
+       xmlns="http://www.springframework.org/schema/beans"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans-4.3.xsd
+       http://dubbo.apache.org/schema/dubbo http://dubbo.apache.org/schema/dubbo/dubbo.xsd">
+
+    <dubbo:application name="diaosichengxuyuan-middleware-consumer"/>
+
+    <dubbo:registry id="zookeeperCenter" address="zookeeper://localhost:2181"/>
+    <dubbo:registry id="redisCenter" address="redis://localhost:6379"/>
+    <dubbo:registry id="multicastCenter" address="multicast://224.5.6.7:1234"/>
+
+    <dubbo:protocol name="dubbo" client="netty4" serialization="fastjson"/>
+    <dubbo:protocol name="hessian" serialization="hessian2"/>
+    <dubbo:protocol name="http"/>
+    <dubbo:protocol name="redis"/>
+    <dubbo:protocol name="rest"/>
+    <dubbo:protocol name="rmi"/>
+    <dubbo:protocol name="webservice"/>
+
+    <dubbo:reference id="service1" check="false" interface="com.diaosichengxuyuan.middleware.dubbo.model.Service1"
+                     timeout="1000000" protocol="dubbo" registry="zookeeperCenter" client="netty4"/>
+
+    <dubbo:reference id="service2" check="false" interface="com.diaosichengxuyuan.middleware.dubbo.model.Service2"
+                     timeout="1000000" protocol="dubbo" registry="zookeeperCenter" client="netty4"/>
+
+    <dubbo:consumer/>
+
+</beans>
