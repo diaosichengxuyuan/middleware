@@ -14,7 +14,7 @@ import java.util.List;
  * @author liuhaipeng
  * @date 2018/10/7
  */
-public class ConcurrentConsumer {
+public class ConcurrentPushConsumer {
 
     public static void main(String[] args) throws InterruptedException, MQClientException {
 
@@ -43,7 +43,7 @@ public class ConcurrentConsumer {
         /*
          * Subscribe one more more topics to consume.
          */
-        consumer.subscribe("TopicTestOrder", "*");
+        consumer.subscribe("TopicTest", "*");
 
         /*
          *  Register callback to execute on arrival of messages fetched from brokers.
